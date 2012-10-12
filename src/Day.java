@@ -5,6 +5,7 @@ public class Day {
 
 	private PriorityQueue<Period> d;
 	private Period currentPeriod;
+	private char dayType;
 
 	public Day() {
 		d = new PriorityQueue<>();
@@ -56,6 +57,14 @@ public class Day {
 		}
 		return line;
 
+	}
+
+	public char getDayType() {
+		return dayType;
+	}
+
+	public void setDayType(char dayType) {
+		this.dayType = dayType;
 	}
 
 }

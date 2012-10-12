@@ -21,6 +21,35 @@ public class ScheduleClientConnection implements Runnable {
 		this.calStorage = calStorage;
 	}
 
+	/*
+	 * The server takes 4 ints separated by spaces this is somewhat sanitized,
+	 * but don't test it
+	 * 
+	 * the format for input is month day year time
+	 * 
+	 * year and time must be four digits, the time must be in 24 hr format
+	 * 
+	 * it returns two lines, the first line is the current period given the time
+	 * 
+	 * the second line is the next period
+	 * 
+	 * these lines each give the period number and then the start and end times
+	 * separated by spaces
+	 * 
+	 * ex 10 11 2012 1051 <-- input 
+	 * A 
+	 * 4 1050 1205 <-output 
+	 * 6 1305 1405
+	 * 
+	 * key to output
+	 * anything >0 is the period number
+	 * -1 is break
+	 * -2 assembly
+	 * -3 class meeting
+	 * -4 advisory
+	 * -5 clubs
+	 */
+
 	@Override
 	public void run() {
 
@@ -40,20 +69,23 @@ public class ScheduleClientConnection implements Runnable {
 					currentTime = adjustTime(currentTime, today, 1);
 					// System.out.println(currentTime);
 					// System.out.println(thing);
+					String stuff = "";
 					if (thing != null) {
 						Period tp;
 						if ((tp = thing.currentPeriod(currentTime)) != null) {
-							out.println(tp.getNumber() + " " + adjustTime(tp.getStartTime(), today, -1) + " "
-									+ adjustTime(tp.getEndTime(), today, -1));
+							stuff += thing.getDayType() + "--";
+							stuff += tp.getNumber() + "--" + adjustTime(tp.getStartTime(), today, -1) + "--"
+									+ adjustTime(tp.getEndTime(), today, -1) + "--";
 						} else {
 							out.println("-8");
 						}
 						if ((tp = thing.nextPeriod(currentTime)) != null) {
-							out.println(tp.getNumber() + " " + adjustTime(tp.getStartTime(), today, -1) + " "
-									+ adjustTime(tp.getEndTime(), today, -1));
+							stuff += tp.getNumber() + "--" + adjustTime(tp.getStartTime(), today, -1) + "--"
+									+ adjustTime(tp.getEndTime(), today, -1) + "--";
 						} else {
-							out.println("-8");
+							stuff += "-8";
 						}
+						out.println(stuff);
 						out.println(".");
 					}
 				}
@@ -95,6 +127,7 @@ public class ScheduleClientConnection implements Runnable {
 			int breakStart;
 			switch (firstPeriod) {
 				case 1:
+					temp.setDayType('A');
 					tempQueue.poll();
 					breakStart = tempQueue.poll().getEndTime();
 					tp.setStartTime(breakStart);
@@ -108,6 +141,7 @@ public class ScheduleClientConnection implements Runnable {
 					break;
 
 				case 2:
+					temp.setDayType('B');
 					tempQueue.poll();
 					breakStart = tempQueue.poll().getEndTime();
 					tp.setStartTime(breakStart);
@@ -122,6 +156,7 @@ public class ScheduleClientConnection implements Runnable {
 					break;
 
 				case 3:
+					temp.setDayType('C');
 					tempQueue.poll();
 					breakStart = tempQueue.poll().getEndTime();
 					tp.setStartTime(breakStart);
@@ -135,6 +170,7 @@ public class ScheduleClientConnection implements Runnable {
 					break;
 
 				case 4:
+					temp.setDayType('D');
 					tempQueue.poll();
 					breakStart = tempQueue.poll().getEndTime();
 					tp.setStartTime(breakStart);
@@ -147,6 +183,7 @@ public class ScheduleClientConnection implements Runnable {
 					temp.add(tp2);
 					break;
 				case 5:
+					temp.setDayType('E');
 					tempQueue.poll();
 					breakStart = tempQueue.poll().getEndTime();
 					tp.setStartTime(breakStart);
@@ -160,6 +197,7 @@ public class ScheduleClientConnection implements Runnable {
 					break;
 
 				case 6:
+					temp.setDayType('F');
 					tempQueue.poll();
 					breakStart = tempQueue.poll().getEndTime();
 					tp.setStartTime(breakStart);
@@ -173,6 +211,7 @@ public class ScheduleClientConnection implements Runnable {
 					break;
 
 				case 7:
+					temp.setDayType('G');
 					tempQueue.poll();
 					breakStart = tempQueue.poll().getEndTime();
 					tp.setStartTime(breakStart);
