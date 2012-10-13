@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
+import java.net.InetAddress;
 
 public class ScheduleServer {
 
@@ -26,7 +27,7 @@ public class ScheduleServer {
 		calStorage = cp.getCalStorage();
 
 		try {
-			myService = new ServerSocket(port);
+			myService = new ServerSocket(port, 0, InetAddress.getByName("localhost"));
 			System.out.println("Started Schedule Server!");
 		} catch (IOException e1) {
 			System.out.println(e1);
