@@ -60,7 +60,7 @@ public class ScheduleClientConnection implements Runnable {
 				String[] temp = line.split(" ");
 				if (temp.length != 4) {
 					out.println("Please enter the time and date in the following format: month day year time");
-					out.println(".");
+					//out.println(".");
 				} else {
 					CurrentDate today = new CurrentDate(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]),
 							Integer.parseInt(temp[2]));
@@ -86,8 +86,10 @@ public class ScheduleClientConnection implements Runnable {
 							stuff += "-8";
 						}
 						out.println(stuff);
-						out.println(".");
+						//out.println(".");
 					}
+					out.println('X');
+					//out.println(".");
 				}
 
 			}
