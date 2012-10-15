@@ -36,18 +36,10 @@ public class ScheduleClientConnection implements Runnable {
 	 * these lines each give the period number and then the start and end times
 	 * separated by spaces
 	 * 
-	 * ex 10 11 2012 1051 <-- input 
-	 * A 
-	 * 4 1050 1205 <-output 
-	 * 6 1305 1405
+	 * ex 10 11 2012 1051 <-- input A 4 1050 1205 <-output 6 1305 1405
 	 * 
-	 * key to output
-	 * anything >0 is the period number
-	 * -1 is break
-	 * -2 assembly
-	 * -3 class meeting
-	 * -4 advisory
-	 * -5 clubs
+	 * key to output anything >0 is the period number -1 is break -2 assembly -3
+	 * class meeting -4 advisory -5 clubs
 	 */
 
 	@Override
@@ -60,11 +52,20 @@ public class ScheduleClientConnection implements Runnable {
 				String[] temp = line.split(" ");
 				if (temp.length != 4) {
 					out.println("Please enter the time and date in the following format: month day year time");
-//					out.println(".");
+					// out.println(".");
 				} else {
 					CurrentDate today = new CurrentDate(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]),
 							Integer.parseInt(temp[2]));
-					Day thing = buildDay(today);
+					Day thing = null;
+					for (Entry<CurrentDate, Day> c : calStorage.entrySet()) {
+						if (c.getKey().equals(today)) {
+							thing = c.getValue();
+						}
+
+					}
+					if (thing.getD().size() <= 7) {
+						thing = buildDay(today);
+					}
 					int currentTime = Integer.parseInt(temp[3]);
 					currentTime = adjustTime(currentTime, today, 1);
 					// System.out.println(currentTime);
@@ -86,10 +87,10 @@ public class ScheduleClientConnection implements Runnable {
 							stuff += "-8";
 						}
 						out.println(stuff);
-//						out.println(".");
+						// out.println(".");
 					}
 					out.println('X');
-//					out.println(".");
+					// out.println(".");
 				}
 
 			}
