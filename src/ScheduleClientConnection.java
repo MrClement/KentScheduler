@@ -78,14 +78,14 @@ public class ScheduleClientConnection implements Runnable {
 							stuff += tp.getNumber() + "--" + adjustTime(tp.getStartTime(), today, -1) + "--"
 									+ adjustTime(tp.getEndTime(), today, -1) + "--";
 						} else {
-							out.println("-8");
+							stuff += "-8--";
 						}
 						if ((tp = thing.nextPeriod(currentTime)) != null) {
 							stuff += tp.getNumber() + "--" + adjustTime(tp.getStartTime(), today, -1) + "--"
-									+ adjustTime(tp.getEndTime(), today, -1) + "--";
+									+ adjustTime(tp.getEndTime(), today, -1);
 						} else if ((tp = thing.nextPeriod(currentTime - 10)) != null) {
 							stuff += tp.getNumber() + "--" + adjustTime(tp.getStartTime(), today, -1) + "--"
-									+ adjustTime(tp.getEndTime(), today, -1) + "--";
+									+ adjustTime(tp.getEndTime(), today, -1);
 
 						} else {
 							stuff += "-8";
