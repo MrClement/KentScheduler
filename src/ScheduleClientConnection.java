@@ -52,7 +52,7 @@ public class ScheduleClientConnection implements Runnable {
 				String[] temp = line.split(" ");
 				if (temp.length != 4) {
 					out.println("Please enter the time and date in the following format: month day year time");
-					out.println(".");
+					// out.println(".");
 				} else {
 					CurrentDate today = new CurrentDate(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]),
 							Integer.parseInt(temp[2]));
@@ -69,7 +69,7 @@ public class ScheduleClientConnection implements Runnable {
 					int currentTime = Integer.parseInt(temp[3]);
 					currentTime = adjustTime(currentTime, today, 1);
 					// System.out.println(currentTime);
-					System.out.println(thing);
+					// System.out.println(thing);
 					String stuff = "";
 					if (thing != null) {
 						Period tp;
@@ -87,10 +87,10 @@ public class ScheduleClientConnection implements Runnable {
 							stuff += "-8";
 						}
 						out.println(stuff);
-						out.println(".");
+						// out.println(".");
 					}
 					out.println('X');
-					out.println(".");
+					// out.println(".");
 				}
 
 			}
@@ -129,8 +129,8 @@ public class ScheduleClientConnection implements Runnable {
 				tempQueue.offer(p);
 			}
 			if (temp.getD().peek().getStartTime() == 900) {
-				lunch.setStartTime(1230);
-				lunch.setEndTime(1330);
+				lunch.setStartTime(adjustTime(1230, today, 1));
+				lunch.setEndTime(adjustTime(1330, today, 1));
 				lunch.setNumber(-7);
 				temp.add(lunch);
 				return temp;
