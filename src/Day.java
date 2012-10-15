@@ -22,7 +22,7 @@ public class Day {
 
 	public Period currentPeriod(int time) {
 		for (Period p : d) {
-			if (p.getStartTime() <= time && time <= p.getEndTime()) {
+			if (p.getStartTime() <= time && time < p.getEndTime()) {
 				currentPeriod = p;
 				return p;
 			}
