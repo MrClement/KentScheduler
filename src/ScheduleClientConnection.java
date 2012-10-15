@@ -39,7 +39,7 @@ public class ScheduleClientConnection implements Runnable {
 	 * ex 10 11 2012 1051 <-- input A 4 1050 1205 <-output 6 1305 1405
 	 * 
 	 * key to output anything >0 is the period number -1 is break -2 assembly -3
-	 * class meeting -4 advisory -5 clubs
+	 * class meeting -4 advisory -5 clubs -7 lunch
 	 */
 
 	@Override
@@ -52,7 +52,7 @@ public class ScheduleClientConnection implements Runnable {
 				String[] temp = line.split(" ");
 				if (temp.length != 4) {
 					out.println("Please enter the time and date in the following format: month day year time");
-					// out.println(".");
+					out.println(".");
 				} else {
 					CurrentDate today = new CurrentDate(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]),
 							Integer.parseInt(temp[2]));
@@ -69,7 +69,7 @@ public class ScheduleClientConnection implements Runnable {
 					int currentTime = Integer.parseInt(temp[3]);
 					currentTime = adjustTime(currentTime, today, 1);
 					// System.out.println(currentTime);
-					// System.out.println(thing);
+					System.out.println(thing);
 					String stuff = "";
 					if (thing != null) {
 						Period tp;
@@ -87,10 +87,10 @@ public class ScheduleClientConnection implements Runnable {
 							stuff += "-8";
 						}
 						out.println(stuff);
-						// out.println(".");
+						out.println(".");
 					}
 					out.println('X');
-					// out.println(".");
+					out.println(".");
 				}
 
 			}
@@ -112,6 +112,9 @@ public class ScheduleClientConnection implements Runnable {
 	}
 
 	public Day buildDay(CurrentDate today) {
+		Period tp = new Period();
+		Period tp2 = new Period();
+		Period lunch = new Period();
 		Day temp = null;
 		for (Entry<CurrentDate, Day> c : calStorage.entrySet()) {
 			if (c.getKey().equals(today)) {
@@ -125,8 +128,13 @@ public class ScheduleClientConnection implements Runnable {
 			for (Period p : temp.getD()) {
 				tempQueue.offer(p);
 			}
-			Period tp = new Period();
-			Period tp2 = new Period();
+			if (temp.getD().peek().getStartTime() == 900) {
+				lunch.setStartTime(1230);
+				lunch.setEndTime(1330);
+				lunch.setNumber(-7);
+				temp.add(lunch);
+				return temp;
+			}
 			int breakStart;
 			switch (firstPeriod) {
 				case 1:
@@ -141,6 +149,10 @@ public class ScheduleClientConnection implements Runnable {
 					tp2.setEndTime(breakStart + 40);
 					tp2.setNumber(-2);
 					temp.add(tp2);
+					lunch.setStartTime(adjustTime(1205, today, 1));
+					lunch.setEndTime(adjustTime(1305, today, 1));
+					lunch.setNumber(-7);
+					temp.add(lunch);
 					break;
 
 				case 2:
@@ -156,6 +168,10 @@ public class ScheduleClientConnection implements Runnable {
 					tp2.setEndTime(breakStart + 65);
 					tp2.setNumber(-5);
 					temp.add(tp2);
+					lunch.setStartTime(adjustTime(1205, today, 1));
+					lunch.setEndTime(adjustTime(1305, today, 1));
+					lunch.setNumber(-7);
+					temp.add(lunch);
 					break;
 
 				case 3:
@@ -170,6 +186,10 @@ public class ScheduleClientConnection implements Runnable {
 					tp2.setEndTime(breakStart + 40);
 					tp2.setNumber(-3);
 					temp.add(tp2);
+					lunch.setStartTime(adjustTime(1205, today, 1));
+					lunch.setEndTime(adjustTime(1305, today, 1));
+					lunch.setNumber(-7);
+					temp.add(lunch);
 					break;
 
 				case 4:
@@ -184,6 +204,10 @@ public class ScheduleClientConnection implements Runnable {
 					tp2.setEndTime(breakStart + 40);
 					tp2.setNumber(-4);
 					temp.add(tp2);
+					lunch.setStartTime(adjustTime(1205, today, 1));
+					lunch.setEndTime(adjustTime(1305, today, 1));
+					lunch.setNumber(-7);
+					temp.add(lunch);
 					break;
 				case 5:
 					temp.setDayType('E');
@@ -197,6 +221,10 @@ public class ScheduleClientConnection implements Runnable {
 					tp2.setEndTime(breakStart + 40);
 					tp2.setNumber(-2);
 					temp.add(tp2);
+					lunch.setStartTime(adjustTime(1205, today, 1));
+					lunch.setEndTime(adjustTime(1305, today, 1));
+					lunch.setNumber(-7);
+					temp.add(lunch);
 					break;
 
 				case 6:
@@ -211,6 +239,10 @@ public class ScheduleClientConnection implements Runnable {
 					tp2.setEndTime(breakStart + 40);
 					tp2.setNumber(-4);
 					temp.add(tp2);
+					lunch.setStartTime(adjustTime(1205, today, 1));
+					lunch.setEndTime(adjustTime(1305, today, 1));
+					lunch.setNumber(-7);
+					temp.add(lunch);
 					break;
 
 				case 7:
@@ -226,6 +258,10 @@ public class ScheduleClientConnection implements Runnable {
 					tp2.setEndTime(breakStart + 65);
 					tp2.setNumber(-5);
 					temp.add(tp2);
+					lunch.setStartTime(adjustTime(1205, today, 1));
+					lunch.setEndTime(adjustTime(1305, today, 1));
+					lunch.setNumber(-7);
+					temp.add(lunch);
 					break;
 				default:
 					break;
