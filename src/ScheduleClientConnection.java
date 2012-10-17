@@ -63,35 +63,37 @@ public class ScheduleClientConnection implements Runnable {
 						}
 
 					}
-					if (thing.getD().size() <= 7) {
-						thing = buildDay(today);
-					}
-					int currentTime = Integer.parseInt(temp[3]);
-					currentTime = adjustTime(currentTime, today, 1);
-					// System.out.println(currentTime);
-					// System.out.println(thing);
-					String stuff = "";
 					if (thing != null) {
-						Period tp;
-						if ((tp = thing.currentPeriod(currentTime)) != null) {
-							stuff += thing.getDayType() + "--";
-							stuff += tp.getNumber() + "--" + adjustTime(tp.getStartTime(), today, -1) + "--"
-									+ adjustTime(tp.getEndTime(), today, -1) + "--";
-						} else {
-							stuff += "-8--";
+						if (thing.getD().size() <= 7) {
+							thing = buildDay(today);
 						}
-						if ((tp = thing.nextPeriod(currentTime)) != null) {
-							stuff += tp.getNumber() + "--" + adjustTime(tp.getStartTime(), today, -1) + "--"
-									+ adjustTime(tp.getEndTime(), today, -1);
-						} else if ((tp = thing.nextPeriod(currentTime - 10)) != null) {
-							stuff += tp.getNumber() + "--" + adjustTime(tp.getStartTime(), today, -1) + "--"
-									+ adjustTime(tp.getEndTime(), today, -1);
+						int currentTime = Integer.parseInt(temp[3]);
+						currentTime = adjustTime(currentTime, today, 1);
+						// System.out.println(currentTime);
+						// System.out.println(thing);
+						String stuff = "";
+						if (thing != null) {
+							Period tp;
+							if ((tp = thing.currentPeriod(currentTime)) != null) {
+								stuff += thing.getDayType() + "--";
+								stuff += tp.getNumber() + "--" + adjustTime(tp.getStartTime(), today, -1) + "--"
+										+ adjustTime(tp.getEndTime(), today, -1) + "--";
+							} else {
+								stuff += "-8--";
+							}
+							if ((tp = thing.nextPeriod(currentTime)) != null) {
+								stuff += tp.getNumber() + "--" + adjustTime(tp.getStartTime(), today, -1) + "--"
+										+ adjustTime(tp.getEndTime(), today, -1);
+							} else if ((tp = thing.nextPeriod(currentTime - 10)) != null) {
+								stuff += tp.getNumber() + "--" + adjustTime(tp.getStartTime(), today, -1) + "--"
+										+ adjustTime(tp.getEndTime(), today, -1);
 
-						} else {
-							stuff += "-8";
+							} else {
+								stuff += "-8";
+							}
+							out.println(stuff);
+							// out.println(".");
 						}
-						out.println(stuff);
-						// out.println(".");
 					}
 					out.println('X');
 					// out.println(".");
