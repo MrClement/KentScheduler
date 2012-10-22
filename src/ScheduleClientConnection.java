@@ -94,9 +94,9 @@ public class ScheduleClientConnection implements Runnable {
 							out.println(stuff);
 							// out.println(".");
 						}
+					} else {
+						out.println('X');
 					}
-					out.println('X');
-					// out.println(".");
 				}
 
 			}
