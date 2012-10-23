@@ -74,22 +74,30 @@ public class ScheduleClientConnection implements Runnable {
 						String stuff = "";
 						if (thing != null) {
 							Period tp;
-							if ((tp = thing.currentPeriod(currentTime)) != null) {
+							if (currentTime < adjustTime(800, today, 1)) {
 								stuff += thing.getDayType() + "--";
+								stuff += "-9--";
+								tp = thing.getD().peek();
 								stuff += tp.getNumber() + "--" + adjustTime(tp.getStartTime(), today, -1) + "--"
-										+ adjustTime(tp.getEndTime(), today, -1) + "--";
+										+ adjustTime(tp.getEndTime(), today, -1);
 							} else {
-								stuff += "-8--";
-							}
-							if ((tp = thing.nextPeriod(currentTime)) != null) {
-								stuff += tp.getNumber() + "--" + adjustTime(tp.getStartTime(), today, -1) + "--"
-										+ adjustTime(tp.getEndTime(), today, -1);
-							} else if ((tp = thing.nextPeriod(currentTime - 10)) != null) {
-								stuff += tp.getNumber() + "--" + adjustTime(tp.getStartTime(), today, -1) + "--"
-										+ adjustTime(tp.getEndTime(), today, -1);
+								if ((tp = thing.currentPeriod(currentTime)) != null) {
+									stuff += thing.getDayType() + "--";
+									stuff += tp.getNumber() + "--" + adjustTime(tp.getStartTime(), today, -1) + "--"
+											+ adjustTime(tp.getEndTime(), today, -1) + "--";
+								} else {
+									stuff += "-8--";
+								}
+								if ((tp = thing.nextPeriod(currentTime)) != null) {
+									stuff += tp.getNumber() + "--" + adjustTime(tp.getStartTime(), today, -1) + "--"
+											+ adjustTime(tp.getEndTime(), today, -1);
+								} else if ((tp = thing.nextPeriod(currentTime - 10)) != null) {
+									stuff += tp.getNumber() + "--" + adjustTime(tp.getStartTime(), today, -1) + "--"
+											+ adjustTime(tp.getEndTime(), today, -1);
 
-							} else {
-								stuff += "-8";
+								} else {
+									stuff += "-8";
+								}
 							}
 							out.println(stuff);
 							// out.println(".");
