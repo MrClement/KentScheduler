@@ -91,7 +91,8 @@ public class ScheduleClientConnection implements Runnable {
 								if ((tp = thing.nextPeriod(currentTime)) != null) {
 									stuff += tp.getNumber() + "--" + adjustTime(tp.getStartTime(), today, -1) + "--"
 											+ adjustTime(tp.getEndTime(), today, -1);
-								} else if ((tp = thing.nextPeriod(currentTime - 10)) != null) {
+								} else if ((tp = thing.nextPeriod(currentTime - 10)) != null
+										&& currentTime < adjustTime(1410, today, 1)) {
 									stuff += tp.getNumber() + "--" + adjustTime(tp.getStartTime(), today, -1) + "--"
 											+ adjustTime(tp.getEndTime(), today, -1);
 
