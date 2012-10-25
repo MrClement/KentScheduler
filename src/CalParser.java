@@ -1,4 +1,3 @@
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map.Entry;
@@ -15,7 +14,7 @@ public class CalParser {
 	public CalParser(String filename) throws FileNotFoundException {
 
 		calStorage = new HashMap<CurrentDate, Day>();
-		Scanner scan = new Scanner(new File(filename));
+		Scanner scan = new Scanner(CalParser.class.getClassLoader().getResourceAsStream(filename));
 		String line = "";
 		while (scan.hasNext()) {
 			line = scan.nextLine();
