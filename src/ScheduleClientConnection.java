@@ -142,17 +142,43 @@ public class ScheduleClientConnection implements Runnable {
 		if (temp != null) {
 			int firstPeriod = temp.getD().peek().getNumber();
 			PriorityQueue<Period> tempQueue = new PriorityQueue<Period>();
+			int breakStart;
 			for (Period p : temp.getD()) {
 				tempQueue.offer(p);
 			}
-			if (temp.getD().peek().getStartTime() == 900) {
+			if (temp.getD().peek().getStartTime() == adjustTime(900, today, 1)) {
+				switch (firstPeriod) {
+					case 1:
+						temp.setDayType('A');
+					case 2:
+						temp.setDayType('B');
+					case 3:
+						temp.setDayType('C');
+					case 4:
+						temp.setDayType('D');
+					case 5:
+						temp.setDayType('E');
+					case 6:
+						temp.setDayType('F');
+					case 7:
+						temp.setDayType('G');
+					default:
+						break;
+				}
+				tempQueue.poll();
+				breakStart = tempQueue.poll().getEndTime();
+				tp.setStartTime(breakStart);
+				tp.setEndTime(breakStart + 60);
+				tp.setNumber(-1);
+				temp.add(tp);
 				lunch.setStartTime(adjustTime(1230, today, 1));
 				lunch.setEndTime(adjustTime(1330, today, 1));
 				lunch.setNumber(-7);
 				temp.add(lunch);
+				System.out.println("Wednesday");
 				return temp;
 			}
-			int breakStart;
+
 			switch (firstPeriod) {
 				case 1:
 					temp.setDayType('A');
