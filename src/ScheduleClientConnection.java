@@ -179,7 +179,7 @@ public class ScheduleClientConnection implements Runnable {
 				tp.setNumber(-1);
 				temp.add(tp);
 				lunch.setStartTime(adjustTime(1230, today, 1));
-				lunch.setEndTime(adjustTime(1330, today, 1));
+				lunch.setEndTime(adjustTime(1325, today, 1));
 				lunch.setNumber(-7);
 				temp.add(lunch);
 				return temp;
