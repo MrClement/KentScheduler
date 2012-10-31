@@ -150,18 +150,25 @@ public class ScheduleClientConnection implements Runnable {
 				switch (firstPeriod) {
 					case 1:
 						temp.setDayType('A');
+						break;
 					case 2:
 						temp.setDayType('B');
+						break;
 					case 3:
 						temp.setDayType('C');
+						break;
 					case 4:
 						temp.setDayType('D');
+						break;
 					case 5:
 						temp.setDayType('E');
+						break;
 					case 6:
 						temp.setDayType('F');
+						break;
 					case 7:
 						temp.setDayType('G');
+						break;
 					default:
 						break;
 				}
@@ -175,7 +182,6 @@ public class ScheduleClientConnection implements Runnable {
 				lunch.setEndTime(adjustTime(1330, today, 1));
 				lunch.setNumber(-7);
 				temp.add(lunch);
-				System.out.println("Wednesday");
 				return temp;
 			}
 
