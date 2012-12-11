@@ -57,6 +57,7 @@ public class ScheduleClientConnection implements Runnable {
 					CurrentDate today = new CurrentDate(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]),
 							Integer.parseInt(temp[2]));
 					Day thing = null;
+					System.out.println(today);
 					for (Entry<CurrentDate, Day> c : calStorage.entrySet()) {
 						if (c.getKey().equals(today)) {
 							thing = c.getValue();
@@ -69,8 +70,8 @@ public class ScheduleClientConnection implements Runnable {
 						}
 						int currentTime = Integer.parseInt(temp[3]);
 						currentTime = adjustTime(currentTime, today, 1);
-						// System.out.println(currentTime);
-						// System.out.println(thing);
+						System.out.println(currentTime);
+						System.out.println(thing);
 						String stuff = "";
 						if (thing != null) {
 							Period tp;
@@ -105,6 +106,7 @@ public class ScheduleClientConnection implements Runnable {
 							out.println(stuff);
 							// out.println(".");
 						}
+
 					} else {
 						out.println('X');
 					}

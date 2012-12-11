@@ -11,6 +11,15 @@ public class CalParser {
 		return calStorage;
 	}
 
+	public void addSpecialDays(HashMap<CurrentDate, Boolean> sDays) {
+		SpecialSchedule sMaker = new SpecialSchedule();
+		System.out.println(sDays.size());
+		for (Entry<CurrentDate, Boolean> e : sDays.entrySet()) {
+			sMaker.makeSpecialDay(e.getValue(), e.getKey());
+			calStorage.put(e.getKey(), sMaker.getSpecialDay());
+		}
+	}
+
 	public CalParser(String filename) throws FileNotFoundException {
 
 		calStorage = new HashMap<CurrentDate, Day>();

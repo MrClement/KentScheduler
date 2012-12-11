@@ -1,9 +1,9 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
-import java.net.InetAddress;
 
 public class ScheduleServer {
 
@@ -24,6 +24,12 @@ public class ScheduleServer {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		HashMap<CurrentDate, Boolean> sDays = new HashMap<>();
+		sDays.put(new CurrentDate(12, 11, 2012), false);
+		sDays.put(new CurrentDate(12, 12, 2012), true);
+		sDays.put(new CurrentDate(12, 13, 2012), false);
+		sDays.put(new CurrentDate(12, 14, 2012), false);
+		cp.addSpecialDays(sDays);
 		calStorage = cp.getCalStorage();
 
 		try {
