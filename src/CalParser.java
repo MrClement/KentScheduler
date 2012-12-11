@@ -13,7 +13,7 @@ public class CalParser {
 
 	public void addSpecialDays(HashMap<CurrentDate, Boolean> sDays) {
 		SpecialSchedule sMaker = new SpecialSchedule();
-		System.out.println(sDays.size());
+		// System.out.println(sDays.size());
 		for (Entry<CurrentDate, Boolean> e : sDays.entrySet()) {
 			sMaker.makeSpecialDay(e.getValue(), e.getKey());
 			calStorage.put(e.getKey(), sMaker.getSpecialDay());
