@@ -91,6 +91,7 @@ public class SpecialSchedule {
 		p.setEndTime(adjustTime(1255, today, 1));
 		p.setNumber(-7);
 		temp.add(p);
+		p=new Period();
 		p.setStartTime(adjustTime(1300, today, 1));
 		p.setEndTime(adjustTime(1340, today, 1));
 		p.setNumber(5);
