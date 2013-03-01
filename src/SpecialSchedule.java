@@ -142,6 +142,7 @@ public class SpecialSchedule {
 
 	private void makeSeniorPetDay() {
 		Day temp = new Day();
+		temp.setDayType('S');
 		Period p = new Period();
 		p.setStartTime(adjustTime(800, today, 1));
 		p.setEndTime(adjustTime(835, today, 1));

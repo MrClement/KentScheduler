@@ -65,7 +65,7 @@ public class ScheduleClientConnection implements Runnable {
 
 					}
 					if (thing != null) {
-						if (thing.getD().size() <= 7) {
+						if (thing.getD().size() <= 7 && thing.getDayType() != 'S') {
 							thing = buildDay(today);
 						}
 						int currentTime = Integer.parseInt(temp[3]);
