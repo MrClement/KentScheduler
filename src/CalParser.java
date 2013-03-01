@@ -11,10 +11,10 @@ public class CalParser {
 		return calStorage;
 	}
 
-	public void addSpecialDays(HashMap<CurrentDate, Boolean> sDays) {
+	public void addSpecialDays(HashMap<CurrentDate, Integer> sDays) {
 		SpecialSchedule sMaker = new SpecialSchedule();
 		// System.out.println(sDays.size());
-		for (Entry<CurrentDate, Boolean> e : sDays.entrySet()) {
+		for (Entry<CurrentDate, Integer> e : sDays.entrySet()) {
 			sMaker.makeSpecialDay(e.getValue(), e.getKey());
 			calStorage.put(e.getKey(), sMaker.getSpecialDay());
 		}

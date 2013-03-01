@@ -91,7 +91,7 @@ public class SpecialSchedule {
 		p.setEndTime(adjustTime(1255, today, 1));
 		p.setNumber(-7);
 		temp.add(p);
-		p=new Period();
+		p = new Period();
 		p.setStartTime(adjustTime(1300, today, 1));
 		p.setEndTime(adjustTime(1340, today, 1));
 		p.setNumber(5);
@@ -119,13 +119,67 @@ public class SpecialSchedule {
 		this.specialDay = specialDay;
 	}
 
-	public void makeSpecialDay(boolean isWednesday, CurrentDate today) {
+	public void makeSpecialDay(int dayType, CurrentDate today) {
 		this.today = today;
-		if (isWednesday) {
-			makeSpecialWenesday();
-		} else {
-			makeSpecial();
+		switch (dayType) {
+			case 0:
+
+				makeSpecial();
+				break;
+
+			case 1:
+				makeSpecialWenesday();
+				break;
+
+			case 2:
+				makeSeniorPetDay();
+				break;
+
+			default:
+				break;
 		}
+	}
+
+	private void makeSeniorPetDay() {
+		Day temp = new Day();
+		Period p = new Period();
+		p.setStartTime(adjustTime(800, today, 1));
+		p.setEndTime(adjustTime(835, today, 1));
+		p.setNumber(1);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(840, today, 1));
+		p.setEndTime(adjustTime(915, today, 1));
+		p.setNumber(2);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(920, today, 1));
+		p.setEndTime(adjustTime(955, today, 1));
+		p.setNumber(3);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1000, today, 1));
+		p.setEndTime(adjustTime(1035, today, 1));
+		p.setNumber(4);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1040, today, 1));
+		p.setEndTime(adjustTime(1115, today, 1));
+		p.setNumber(7);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1120, today, 1));
+		p.setEndTime(adjustTime(1155, today, 1));
+		p.setNumber(5);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1200, today, 1));
+		p.setEndTime(adjustTime(1235, today, 1));
+		p.setNumber(6);
+		temp.add(p);
+		p = new Period();
+		specialDay = temp;
+
 	}
 
 	public int adjustTime(int time, CurrentDate today, int direction) {

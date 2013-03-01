@@ -24,11 +24,12 @@ public class ScheduleServer {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		HashMap<CurrentDate, Boolean> sDays = new HashMap<>();
-		sDays.put(new CurrentDate(12, 11, 2012), false);
-		sDays.put(new CurrentDate(12, 12, 2012), true);
-		sDays.put(new CurrentDate(12, 13, 2012), false);
-		sDays.put(new CurrentDate(12, 14, 2012), false);
+		HashMap<CurrentDate, Integer> sDays = new HashMap<>();
+		sDays.put(new CurrentDate(12, 11, 2012), 0);
+		sDays.put(new CurrentDate(12, 12, 2012), 1);
+		sDays.put(new CurrentDate(12, 13, 2012), 0);
+		sDays.put(new CurrentDate(12, 14, 2012), 0);
+		sDays.put(new CurrentDate(3, 1, 2013), 2);
 		cp.addSpecialDays(sDays);
 		calStorage = cp.getCalStorage();
 
