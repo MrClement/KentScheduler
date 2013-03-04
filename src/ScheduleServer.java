@@ -21,7 +21,6 @@ public class ScheduleServer {
 		try {
 			cp = new CalParser("AllPeriods.txt");
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		HashMap<CurrentDate, Integer> sDays = new HashMap<>();
@@ -30,6 +29,8 @@ public class ScheduleServer {
 		sDays.put(new CurrentDate(12, 13, 2012), 0);
 		sDays.put(new CurrentDate(12, 14, 2012), 0);
 		sDays.put(new CurrentDate(3, 1, 2013), 2);
+		cp.getCalStorage().remove(new CurrentDate(3, 5, 2013));
+		sDays.put(new CurrentDate(3, 5, 2013), 3);
 		cp.addSpecialDays(sDays);
 		calStorage = cp.getCalStorage();
 

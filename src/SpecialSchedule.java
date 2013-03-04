@@ -123,18 +123,17 @@ public class SpecialSchedule {
 		this.today = today;
 		switch (dayType) {
 			case 0:
-
 				makeSpecial();
 				break;
-
 			case 1:
 				makeSpecialWenesday();
 				break;
-
 			case 2:
 				makeSeniorPetDay();
 				break;
-
+			case 3:
+				makeMarchFifth();
+				break;
 			default:
 				break;
 		}
@@ -177,6 +176,49 @@ public class SpecialSchedule {
 		p.setStartTime(adjustTime(1200, today, 1));
 		p.setEndTime(adjustTime(1235, today, 1));
 		p.setNumber(6);
+		temp.add(p);
+		p = new Period();
+		specialDay = temp;
+
+	}
+
+	private void makeMarchFifth() {
+		Day temp = new Day();
+		temp.setDayType('S');
+		Period p = new Period();
+		p.setStartTime(adjustTime(800, today, 1));
+		p.setEndTime(adjustTime(900, today, 1));
+		p.setNumber(4);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(905, today, 1));
+		p.setEndTime(adjustTime(1005, today, 1));
+		p.setNumber(-2);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1010, today, 1));
+		p.setEndTime(adjustTime(1110, today, 1));
+		p.setNumber(6);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1115, today, 1));
+		p.setEndTime(adjustTime(1215, today, 1));
+		p.setNumber(7);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1215, today, 1));
+		p.setEndTime(adjustTime(1305, today, 1));
+		p.setNumber(-7);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1305, today, 1));
+		p.setEndTime(adjustTime(1405, today, 1));
+		p.setNumber(2);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1410, today, 1));
+		p.setEndTime(adjustTime(1510, today, 1));
+		p.setNumber(3);
 		temp.add(p);
 		p = new Period();
 		specialDay = temp;
