@@ -4,6 +4,7 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
+import java.util.Map.Entry;
 
 public class ScheduleServer {
 
@@ -24,12 +25,19 @@ public class ScheduleServer {
 			e.printStackTrace();
 		}
 		HashMap<CurrentDate, Integer> sDays = new HashMap<>();
+		CurrentDate test = null;
+		for (Entry<CurrentDate, Day> c : cp.getCalStorage().entrySet()) {
+			if (c.getKey().equals(new CurrentDate(3, 5, 2013))) {
+				test = c.getKey();
+			}
+
+		}
+		cp.getCalStorage().remove(test);
 		sDays.put(new CurrentDate(12, 11, 2012), 0);
 		sDays.put(new CurrentDate(12, 12, 2012), 1);
 		sDays.put(new CurrentDate(12, 13, 2012), 0);
 		sDays.put(new CurrentDate(12, 14, 2012), 0);
 		sDays.put(new CurrentDate(3, 1, 2013), 2);
-		cp.getCalStorage().remove(new CurrentDate(3, 5, 2013));
 		sDays.put(new CurrentDate(3, 5, 2013), 3);
 		cp.addSpecialDays(sDays);
 		calStorage = cp.getCalStorage();
