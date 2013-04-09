@@ -179,6 +179,9 @@ public class ScheduleClientConnection implements Runnable {
 				tp.setStartTime(breakStart);
 				tp.setEndTime(breakStart + 60);
 				tp.setNumber(-1);
+				if (today.equals(new CurrentDate(4, 10, 2013))) {
+					tp.setNumber(-3);
+				}
 				temp.add(tp);
 				lunch.setStartTime(adjustTime(1230, today, 1));
 				lunch.setEndTime(adjustTime(1325, today, 1));

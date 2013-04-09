@@ -43,6 +43,10 @@ public class CurrentDate {
 
 	}
 
+	public boolean equals(Object o) {
+		return equals((CurrentDate) o);
+	}
+
 	public String toString() {
 		return "" + month + " " + day + " " + year;
 	}
