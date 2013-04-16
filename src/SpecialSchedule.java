@@ -134,6 +134,9 @@ public class SpecialSchedule {
 			case 3:
 				makeMarchFifth();
 				break;
+			case 4:
+				makeDelayDay();
+				break;
 			default:
 				break;
 		}
@@ -223,6 +226,48 @@ public class SpecialSchedule {
 		p = new Period();
 		specialDay = temp;
 
+	}
+
+	private void makeDelayDay() {
+		Day temp = new Day();
+		temp.setDayType('A');
+		Period p = new Period();
+		p.setStartTime(adjustTime(900, today, 1));
+		p.setEndTime(adjustTime(955, today, 1));
+		p.setNumber(1);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1000, today, 1));
+		p.setEndTime(adjustTime(1055, today, 1));
+		p.setNumber(3);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1055, today, 1));
+		p.setEndTime(adjustTime(1115, today, 1));
+		p.setNumber(-2);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1115, today, 1));
+		p.setEndTime(adjustTime(1230, today, 1));
+		p.setNumber(4);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1230, today, 1));
+		p.setEndTime(adjustTime(1325, today, 1));
+		p.setNumber(-7);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1325, today, 1));
+		p.setEndTime(adjustTime(1420, today, 1));
+		p.setNumber(6);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1425, today, 1));
+		p.setEndTime(adjustTime(1520, today, 1));
+		p.setNumber(7);
+		temp.add(p);
+		p = new Period();
+		specialDay = temp;
 	}
 
 	public int adjustTime(int time, CurrentDate today, int direction) {
