@@ -59,6 +59,58 @@ public class SpecialSchedule {
 
 	}
 
+	private void makeSpringFling() {
+		Day temp = new Day();
+		temp.setDayType('S');
+		Period p = new Period();
+		p.setStartTime(adjustTime(800, today, 1));
+		p.setEndTime(adjustTime(825, today, 1));
+		p.setNumber(1);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(830, today, 1));
+		p.setEndTime(adjustTime(855, today, 1));
+		p.setNumber(2);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(900, today, 1));
+		p.setEndTime(adjustTime(925, today, 1));
+		p.setNumber(3);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(930, today, 1));
+		p.setEndTime(adjustTime(955, today, 1));
+		p.setNumber(4);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1000, today, 1));
+		p.setEndTime(adjustTime(1025, today, 1));
+		p.setNumber(7);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1030, today, 1));
+		p.setEndTime(adjustTime(1055, today, 1));
+		p.setNumber(5);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1100, today, 1));
+		p.setEndTime(adjustTime(1125, today, 1));
+		p.setNumber(6);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1130, today, 1));
+		p.setEndTime(adjustTime(1230, today, 1));
+		p.setNumber(-2);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1235, today, 1));
+		p.setEndTime(adjustTime(1310, today, 1));
+		p.setNumber(-7);
+		temp.add(p);
+		p = new Period();
+		specialDay = temp;
+	}
+
 	private void makeSpecialWenesday() {
 		Day temp = new Day();
 		Period p = new Period();
@@ -136,6 +188,9 @@ public class SpecialSchedule {
 				break;
 			case 4:
 				makeDelayDay();
+				break;
+			case 5:
+				makeSpringFling();
 				break;
 			default:
 				break;
@@ -232,6 +287,12 @@ public class SpecialSchedule {
 		Day temp = new Day();
 		temp.setDayType('A');
 		Period p = new Period();
+		p.setStartTime(adjustTime(900, today, 1));
+		p.setEndTime(adjustTime(955, today, 1));
+		p.setNumber(1);
+		temp.add(p);
+		p = new Period();
+		p = new Period();
 		p.setStartTime(adjustTime(900, today, 1));
 		p.setEndTime(adjustTime(955, today, 1));
 		p.setNumber(1);
