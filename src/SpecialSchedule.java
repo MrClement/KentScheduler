@@ -6,6 +6,67 @@ public class SpecialSchedule {
 	public SpecialSchedule() {
 
 	}
+	
+	private void makeFirstDay() {
+		Day temp = new Day();
+		temp.setDayType('S');
+		Period p = new Period();
+		p.setStartTime(adjustTime(800, today, 1));
+		p.setEndTime(adjustTime(805, today, 1));
+		p.setNumber(-3);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(805, today, 1));
+		p.setEndTime(adjustTime(840, today, 1));
+		p.setNumber(-2);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(850, today, 1));
+		p.setEndTime(adjustTime(930, today, 1));
+		p.setNumber(1);
+		temp.add(p);
+		p.setStartTime(adjustTime(935, today, 1));
+		p.setEndTime(adjustTime(1015, today, 1));
+		p.setNumber(2);
+		temp.add(p);
+		p.setStartTime(adjustTime(1020, today, 1));
+		p.setEndTime(adjustTime(1100, today, 1));
+		p.setNumber(3);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1105, today, 1));
+		p.setEndTime(adjustTime(1145, today, 1));
+		p.setNumber(4);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1150, today, 1));
+		p.setEndTime(adjustTime(1205, today, 1));
+		p.setNumber(-4);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1210, today, 1));
+		p.setEndTime(adjustTime(1245, today, 1));
+		p.setNumber(-7);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1250, today, 1));
+		p.setEndTime(adjustTime(1330, today, 1));
+		p.setNumber(5);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1335, today, 1));
+		p.setEndTime(adjustTime(1415, today, 1));
+		p.setNumber(6);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1420, today, 1));
+		p.setEndTime(adjustTime(1505, today, 1));
+		p.setNumber(7);
+		temp.add(p);
+		p = new Period();
+		specialDay = temp;
+
+	}
 
 	private void makeSpecial() {
 		Day temp = new Day();
@@ -191,6 +252,9 @@ public class SpecialSchedule {
 				break;
 			case 5:
 				makeSpringFling();
+				break;
+			case 6:
+				makeFirstDay();
 				break;
 			default:
 				break;

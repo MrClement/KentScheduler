@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 public class ScheduleServer {
 
-	private static int port = 8080;
+	private static int port = 65534;
 	private static int maxConnections = 0;
 	private static HashMap<CurrentDate, Day> calStorage;
 
@@ -41,7 +41,7 @@ public class ScheduleServer {
 		// cp.getCalStorage().remove(test);
 
 		// sDays.put(new CurrentDate(12, 11, 2012), 0);
-
+		sDays.put(new CurrentDate(8, 20, 2013), 6);
 		cp.addSpecialDays(sDays);
 		calStorage = cp.getCalStorage();
 
