@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 public class ScheduleServer {
 
-	private static int port = 65534;
+	private static int port = 8080;
 	private static int maxConnections = 0;
 	private static HashMap<CurrentDate, Day> calStorage;
 
@@ -23,7 +23,7 @@ public class ScheduleServer {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		HashMap<CurrentDate, Integer> sDays = new HashMap<>();
+		HashMap<CurrentDate, Integer> sDays = new HashMap<CurrentDate, Integer>();
 		// CurrentDate test = null;
 		// for (Entry<CurrentDate, Day> c : cp.getCalStorage().entrySet()) {
 		// if (c.getKey().equals(new CurrentDate(3, 5, 2013))) {

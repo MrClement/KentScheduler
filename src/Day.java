@@ -8,7 +8,7 @@ public class Day {
 	private char dayType;
 
 	public Day() {
-		d = new PriorityQueue<>();
+		d = new PriorityQueue<Period>();
 		currentPeriod = null;
 	}
 
