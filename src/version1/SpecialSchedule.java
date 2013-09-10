@@ -1,3 +1,4 @@
+package version1;
 public class SpecialSchedule {
 
 	private Day specialDay;

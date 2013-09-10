@@ -1,3 +1,4 @@
+package version1;
 public class Period implements Comparable<Period> {
 
 	private int number;

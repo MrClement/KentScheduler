@@ -1,3 +1,4 @@
+package version1;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -65,9 +66,10 @@ public class ScheduleClientConnection implements Runnable {
 
 					}
 					if (thing != null) {
-						if (thing.getD().size() <= 7 && thing.getDayType() != 'S') {
-							thing = buildDay(today);
-						}
+						// if (thing.getD().size() <= 7 && thing.getDayType() !=
+						// 'S') {
+						// thing = buildDay(today);
+						// }
 						int currentTime = Integer.parseInt(temp[3]);
 						currentTime = adjustTime(currentTime, today, 1);
 						// System.out.println(currentTime);
