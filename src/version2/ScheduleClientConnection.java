@@ -66,7 +66,6 @@ public class ScheduleClientConnection implements Runnable {
 
 					}
 					if (thing != null) {
-						setDayType(today, thing);
 						int currentTime = Integer.parseInt(temp[3]);
 						currentTime = adjustTime(currentTime, today, 1);
 						String stuff = "";
@@ -125,38 +124,6 @@ public class ScheduleClientConnection implements Runnable {
 		}
 		return currentTime;
 
-	}
-
-	public void setDayType(CurrentDate today, Day d) {
-		int firstPeriod = d.getD().peek().getNumber();
-		if (d.getD().peek().getStartTime() == adjustTime(900, today, 1)) {
-			switch (firstPeriod) {
-				case 1:
-					d.setDayType('A');
-					break;
-				case 2:
-					d.setDayType('B');
-					break;
-				case 3:
-					d.setDayType('C');
-					break;
-				case 4:
-					d.setDayType('D');
-					break;
-				case 5:
-					d.setDayType('E');
-					break;
-				case 6:
-					d.setDayType('F');
-					break;
-				case 7:
-					d.setDayType('G');
-					break;
-				default:
-					break;
-			}
-
-		}
 	}
 
 }

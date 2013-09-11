@@ -138,6 +138,38 @@ public class CalParser {
 		}
 		Day day = new Day();
 		day.add(p);
+		setDayType(d, day);
 		calStorage.put(d, day);
 	}
+
+	private void setDayType(CurrentDate today, Day d) {
+		int firstPeriod = d.getD().peek().getNumber();
+		switch (firstPeriod) {
+			case 1:
+				d.setDayType('A');
+				break;
+			case 2:
+				d.setDayType('B');
+				break;
+			case 3:
+				d.setDayType('C');
+				break;
+			case 4:
+				d.setDayType('D');
+				break;
+			case 5:
+				d.setDayType('E');
+				break;
+			case 6:
+				d.setDayType('F');
+				break;
+			case 7:
+				d.setDayType('G');
+				break;
+			default:
+				break;
+
+		}
+	}
+
 }
