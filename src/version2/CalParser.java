@@ -1,4 +1,5 @@
 package version2;
+
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map.Entry;
@@ -65,7 +66,50 @@ public class CalParser {
 				temp = line.split(":");
 				if (temp[0].equals("SUMMARY")) {
 					String data = temp[1];
-					p.setNumber(Integer.parseInt(data.substring(data.indexOf(" ") + 1)));
+					switch (data) {
+						case "Period 1":
+							p.setNumber(1);
+							break;
+						case "Period 2":
+							p.setNumber(2);
+							break;
+						case "Period 3":
+							p.setNumber(3);
+							break;
+						case "Period 4":
+							p.setNumber(4);
+							break;
+						case "Period 5":
+							p.setNumber(5);
+							break;
+						case "Period 6":
+							p.setNumber(6);
+							break;
+						case "Period 7":
+							p.setNumber(7);
+							break;
+						case "Break":
+							p.setNumber(-1);
+							break;
+						case "Assembly":
+							p.setNumber(-2);
+							break;
+						case "Class Meeting":
+							p.setNumber(-3);
+							break;
+						case "Advisory":
+							p.setNumber(-4);
+							break;
+						case "Clubs":
+							p.setNumber(-5);
+							break;
+						case "Lunch":
+							p.setNumber(-7);
+							break;
+						default:
+							p.setNumber(42);
+							break;
+					}
 					// System.out.println(p.getNumber());
 				} else {
 					System.out.println("ERROR: Could not find summary!");

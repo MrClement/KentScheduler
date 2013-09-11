@@ -1,4 +1,5 @@
 package version2;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -6,7 +7,6 @@ import java.io.PrintStream;
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map.Entry;
-import java.util.PriorityQueue;
 
 public class ScheduleClientConnection implements Runnable {
 
@@ -66,14 +66,8 @@ public class ScheduleClientConnection implements Runnable {
 
 					}
 					if (thing != null) {
-						// if (thing.getD().size() <= 7 && thing.getDayType() !=
-						// 'S') {
-						// thing = buildDay(today);
-						// }
 						int currentTime = Integer.parseInt(temp[3]);
 						currentTime = adjustTime(currentTime, today, 1);
-						// System.out.println(currentTime);
-						// System.out.println(thing);
 						String stuff = "";
 						if (thing != null) {
 							Period tp;
@@ -132,197 +126,4 @@ public class ScheduleClientConnection implements Runnable {
 
 	}
 
-	public Day buildDay(CurrentDate today) {
-		Period tp = new Period();
-		Period tp2 = new Period();
-		Period lunch = new Period();
-		Day temp = null;
-		for (Entry<CurrentDate, Day> c : calStorage.entrySet()) {
-			if (c.getKey().equals(today)) {
-				temp = c.getValue();
-			}
-
-		}
-		if (temp != null) {
-			int firstPeriod = temp.getD().peek().getNumber();
-			PriorityQueue<Period> tempQueue = new PriorityQueue<Period>();
-			int breakStart;
-			for (Period p : temp.getD()) {
-				tempQueue.offer(p);
-			}
-			if (temp.getD().peek().getStartTime() == adjustTime(900, today, 1)) {
-				switch (firstPeriod) {
-					case 1:
-						temp.setDayType('A');
-						break;
-					case 2:
-						temp.setDayType('B');
-						break;
-					case 3:
-						temp.setDayType('C');
-						break;
-					case 4:
-						temp.setDayType('D');
-						break;
-					case 5:
-						temp.setDayType('E');
-						break;
-					case 6:
-						temp.setDayType('F');
-						break;
-					case 7:
-						temp.setDayType('G');
-						break;
-					default:
-						break;
-				}
-				tempQueue.poll();
-				breakStart = tempQueue.poll().getEndTime();
-				tp.setStartTime(breakStart);
-				tp.setEndTime(breakStart + 60);
-				tp.setNumber(-1);
-				if (today.equals(new CurrentDate(4, 10, 2013))) {
-					tp.setNumber(-3);
-				}
-				temp.add(tp);
-				lunch.setStartTime(adjustTime(1230, today, 1));
-				lunch.setEndTime(adjustTime(1325, today, 1));
-				lunch.setNumber(-7);
-				temp.add(lunch);
-				return temp;
-			}
-
-			switch (firstPeriod) {
-				case 1:
-					temp.setDayType('A');
-					tempQueue.poll();
-					breakStart = tempQueue.poll().getEndTime();
-					tp.setStartTime(breakStart);
-					tp.setEndTime(breakStart + 20);
-					tp.setNumber(-1);
-					temp.add(tp);
-					tp2.setStartTime(breakStart + 20);
-					tp2.setEndTime(breakStart + 40);
-					tp2.setNumber(-2);
-					temp.add(tp2);
-					lunch.setStartTime(adjustTime(1205, today, 1));
-					lunch.setEndTime(adjustTime(1305, today, 1));
-					lunch.setNumber(-7);
-					temp.add(lunch);
-					break;
-
-				case 2:
-					temp.setDayType('B');
-					tempQueue.poll();
-					breakStart = tempQueue.poll().getEndTime();
-					tp.setStartTime(breakStart);
-					tp.setEndTime(breakStart + 20);
-					tp.setNumber(-1);
-					temp.add(tp);
-					breakStart = tempQueue.poll().getEndTime();
-					tp2.setStartTime(breakStart + 5);
-					tp2.setEndTime(breakStart + 65);
-					tp2.setNumber(-5);
-					temp.add(tp2);
-					lunch.setStartTime(adjustTime(1205, today, 1));
-					lunch.setEndTime(adjustTime(1305, today, 1));
-					lunch.setNumber(-7);
-					temp.add(lunch);
-					break;
-
-				case 3:
-					temp.setDayType('C');
-					tempQueue.poll();
-					breakStart = tempQueue.poll().getEndTime();
-					tp.setStartTime(breakStart);
-					tp.setEndTime(breakStart + 20);
-					tp.setNumber(-1);
-					temp.add(tp);
-					tp2.setStartTime(breakStart + 20);
-					tp2.setEndTime(breakStart + 40);
-					tp2.setNumber(-3);
-					temp.add(tp2);
-					lunch.setStartTime(adjustTime(1205, today, 1));
-					lunch.setEndTime(adjustTime(1305, today, 1));
-					lunch.setNumber(-7);
-					temp.add(lunch);
-					break;
-
-				case 4:
-					temp.setDayType('D');
-					tempQueue.poll();
-					breakStart = tempQueue.poll().getEndTime();
-					tp.setStartTime(breakStart);
-					tp.setEndTime(breakStart + 20);
-					tp.setNumber(-1);
-					temp.add(tp);
-					tp2.setStartTime(breakStart + 20);
-					tp2.setEndTime(breakStart + 40);
-					tp2.setNumber(-4);
-					temp.add(tp2);
-					lunch.setStartTime(adjustTime(1205, today, 1));
-					lunch.setEndTime(adjustTime(1305, today, 1));
-					lunch.setNumber(-7);
-					temp.add(lunch);
-					break;
-				case 5:
-					temp.setDayType('E');
-					tempQueue.poll();
-					breakStart = tempQueue.poll().getEndTime();
-					tp.setStartTime(breakStart);
-					tp.setEndTime(breakStart + 20);
-					tp.setNumber(-1);
-					temp.add(tp);
-					tp2.setStartTime(breakStart + 20);
-					tp2.setEndTime(breakStart + 40);
-					tp2.setNumber(-2);
-					temp.add(tp2);
-					lunch.setStartTime(adjustTime(1205, today, 1));
-					lunch.setEndTime(adjustTime(1305, today, 1));
-					lunch.setNumber(-7);
-					temp.add(lunch);
-					break;
-
-				case 6:
-					temp.setDayType('F');
-					tempQueue.poll();
-					breakStart = tempQueue.poll().getEndTime();
-					tp.setStartTime(breakStart);
-					tp.setEndTime(breakStart + 20);
-					tp.setNumber(-1);
-					temp.add(tp);
-					tp2.setStartTime(breakStart + 20);
-					tp2.setEndTime(breakStart + 40);
-					tp2.setNumber(-4);
-					temp.add(tp2);
-					lunch.setStartTime(adjustTime(1205, today, 1));
-					lunch.setEndTime(adjustTime(1305, today, 1));
-					lunch.setNumber(-7);
-					temp.add(lunch);
-					break;
-
-				case 7:
-					temp.setDayType('G');
-					tempQueue.poll();
-					breakStart = tempQueue.poll().getEndTime();
-					tp.setStartTime(breakStart);
-					tp.setEndTime(breakStart + 20);
-					tp.setNumber(-1);
-					temp.add(tp);
-					breakStart = tempQueue.poll().getEndTime();
-					tp2.setStartTime(breakStart + 5);
-					tp2.setEndTime(breakStart + 65);
-					tp2.setNumber(-5);
-					temp.add(tp2);
-					lunch.setStartTime(adjustTime(1205, today, 1));
-					lunch.setEndTime(adjustTime(1305, today, 1));
-					lunch.setNumber(-7);
-					temp.add(lunch);
-					break;
-				default:
-					break;
-			}
-		}
-		return temp;
-	}
 }
