@@ -1,4 +1,5 @@
 package version2;
+
 public class SpecialSchedule {
 
 	private Day specialDay;
@@ -7,7 +8,7 @@ public class SpecialSchedule {
 	public SpecialSchedule() {
 
 	}
-	
+
 	private void makeFirstDay() {
 		Day temp = new Day();
 		temp.setDayType('S');
@@ -257,6 +258,9 @@ public class SpecialSchedule {
 			case 6:
 				makeFirstDay();
 				break;
+			case 7:
+				makeGrandparentsDay();
+				break;
 			default:
 				break;
 		}
@@ -391,6 +395,48 @@ public class SpecialSchedule {
 		p.setStartTime(adjustTime(1425, today, 1));
 		p.setEndTime(adjustTime(1520, today, 1));
 		p.setNumber(7);
+		temp.add(p);
+		p = new Period();
+		specialDay = temp;
+	}
+
+	private void makeGrandparentsDay() {
+		Day temp = new Day();
+		temp.setDayType('S');
+		Period p = new Period();
+		p.setStartTime(adjustTime(800, today, 1));
+		p.setEndTime(adjustTime(830, today, 1));
+		p.setNumber(1);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(835, today, 1));
+		p.setEndTime(adjustTime(905, today, 1));
+		p.setNumber(2);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(910, today, 1));
+		p.setEndTime(adjustTime(940, today, 1));
+		p.setNumber(3);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(945, today, 1));
+		p.setEndTime(adjustTime(1015, today, 1));
+		p.setNumber(4);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1020, today, 1));
+		p.setEndTime(adjustTime(1050, today, 1));
+		p.setNumber(7);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1055, today, 1));
+		p.setEndTime(adjustTime(1125, today, 1));
+		p.setNumber(5);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1130, today, 1));
+		p.setEndTime(adjustTime(1200, today, 1));
+		p.setNumber(6);
 		temp.add(p);
 		p = new Period();
 		specialDay = temp;
