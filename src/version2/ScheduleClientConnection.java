@@ -117,11 +117,8 @@ public class ScheduleClientConnection implements Runnable {
 
 	public int adjustTime(int time, CurrentDate today, int direction) {
 		int currentTime = time;
-		if (today.isBefore(new CurrentDate(11, 4, 2012)) || today.isAfterOrEqual(new CurrentDate(3, 10, 2013))) {
-			currentTime += 600 * direction;
-		} else {
-			currentTime += 700 * direction;
-		}
+		currentTime += 700 * direction;
+		System.out.println(currentTime);
 		return currentTime;
 
 	}
