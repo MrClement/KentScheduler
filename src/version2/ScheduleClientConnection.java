@@ -118,7 +118,6 @@ public class ScheduleClientConnection implements Runnable {
 	public int adjustTime(int time, CurrentDate today, int direction) {
 		int currentTime = time;
 		currentTime += 700 * direction;
-		System.out.println(currentTime);
 		return currentTime;
 
 	}
