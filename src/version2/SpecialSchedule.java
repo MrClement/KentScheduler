@@ -9,6 +9,49 @@ public class SpecialSchedule {
 
 	}
 
+	public Day getSpecialDay() {
+		return specialDay;
+	}
+
+	public void setSpecialDay(Day specialDay) {
+		this.specialDay = specialDay;
+	}
+
+	public void makeSpecialDay(int dayType, CurrentDate today) {
+		this.today = today;
+		switch (dayType) {
+			case 0:
+				makeSpecial();
+				break;
+			case 1:
+				makeSpecialWenesday();
+				break;
+			case 2:
+				makeSeniorPetDay();
+				break;
+			case 3:
+				makeMarchFifth();
+				break;
+			case 4:
+				makeDelayDay();
+				break;
+			case 5:
+				makeSpringFling();
+				break;
+			case 6:
+				makeFirstDay();
+				break;
+			case 7:
+				makeGrandparentsDay();
+				break;
+			case 8:
+				make1172014();
+				break;
+			default:
+				break;
+		}
+	}
+
 	private void makeFirstDay() {
 		Day temp = new Day();
 		temp.setDayType('S');
@@ -122,6 +165,59 @@ public class SpecialSchedule {
 
 	}
 
+	private void make1172014() {
+		Day temp = new Day();
+		temp.setDayType('S');
+		Period p = new Period();
+		p.setStartTime(adjustTime(800, today, 1));
+		p.setEndTime(adjustTime(845, today, 1));
+		p.setNumber(1);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(850, today, 1));
+		p.setEndTime(adjustTime(935, today, 1));
+		p.setNumber(2);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(940, today, 1));
+		p.setEndTime(adjustTime(1025, today, 1));
+		p.setNumber(3);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1030, today, 1));
+		p.setEndTime(adjustTime(1115, today, 1));
+		p.setNumber(4);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1120, today, 1));
+		p.setEndTime(adjustTime(1205, today, 1));
+		p.setNumber(-2);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1205, today, 1));
+		p.setEndTime(adjustTime(1250, today, 1));
+		p.setNumber(-7);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1255, today, 1));
+		p.setEndTime(adjustTime(1340, today, 1));
+		p.setNumber(5);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1345, today, 1));
+		p.setEndTime(adjustTime(1430, today, 1));
+		p.setNumber(6);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1435, today, 1));
+		p.setEndTime(adjustTime(1520, today, 1));
+		p.setNumber(7);
+		temp.add(p);
+		p = new Period();
+		specialDay = temp;
+
+	}
+
 	private void makeSpringFling() {
 		Day temp = new Day();
 		temp.setDayType('S');
@@ -224,46 +320,6 @@ public class SpecialSchedule {
 		p = new Period();
 		specialDay = temp;
 
-	}
-
-	public Day getSpecialDay() {
-		return specialDay;
-	}
-
-	public void setSpecialDay(Day specialDay) {
-		this.specialDay = specialDay;
-	}
-
-	public void makeSpecialDay(int dayType, CurrentDate today) {
-		this.today = today;
-		switch (dayType) {
-			case 0:
-				makeSpecial();
-				break;
-			case 1:
-				makeSpecialWenesday();
-				break;
-			case 2:
-				makeSeniorPetDay();
-				break;
-			case 3:
-				makeMarchFifth();
-				break;
-			case 4:
-				makeDelayDay();
-				break;
-			case 5:
-				makeSpringFling();
-				break;
-			case 6:
-				makeFirstDay();
-				break;
-			case 7:
-				makeGrandparentsDay();
-				break;
-			default:
-				break;
-		}
 	}
 
 	private void makeSeniorPetDay() {
@@ -444,11 +500,7 @@ public class SpecialSchedule {
 
 	public int adjustTime(int time, CurrentDate today, int direction) {
 		int currentTime = time;
-		if (today.isBefore(new CurrentDate(11, 4, 2012)) || today.isAfterOrEqual(new CurrentDate(3, 10, 2013))) {
-			currentTime += 600 * direction;
-		} else {
-			currentTime += 700 * direction;
-		}
+		currentTime += 700 * direction;
 		return currentTime;
 
 	}
