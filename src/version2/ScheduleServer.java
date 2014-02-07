@@ -76,14 +76,6 @@ public class ScheduleServer {
 
 		}
 		cp.getCalStorage().remove(test);
-		// for (Entry<CurrentDate, Day> c : cp.getCalStorage().entrySet()) {
-		// if (c.getKey().equals(new CurrentDate(4, 16, 2013))) {
-		// test = c.getKey();
-		// }
-		//
-		// }
-		// cp.getCalStorage().remove(test);
 
-		// sDays.put(new CurrentDate(12, 11, 2012), 0);
 	}
 }
