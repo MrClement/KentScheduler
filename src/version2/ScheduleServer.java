@@ -32,6 +32,7 @@ public class ScheduleServer {
 		sDays.put(new CurrentDate(8, 20, 2013), 6);
 		sDays.put(new CurrentDate(10, 11, 2013), 7);
 		sDays.put(new CurrentDate(1, 17, 2014), 8);
+		sDays.put(new CurrentDate(2, 28, 2014), 2);
 
 		removeExistingDay(new CurrentDate(2, 11, 2014));
 		sDays.put(new CurrentDate(2, 11, 2014), 9);
