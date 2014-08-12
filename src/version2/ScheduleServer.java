@@ -29,22 +29,17 @@ public class ScheduleServer {
 		}
 		HashMap<CurrentDate, Integer> sDays = new HashMap<CurrentDate, Integer>();
 
-		sDays.put(new CurrentDate(8, 20, 2013), 6);
-		sDays.put(new CurrentDate(10, 11, 2013), 7);
-		sDays.put(new CurrentDate(1, 17, 2014), 8);
-		sDays.put(new CurrentDate(2, 28, 2014), 2);
+		/*
+		 * SPECIAL SCHEDULE EXAMPLES
+		 * 
+		 * sDays.put(new CurrentDate(8, 20, 2013), 6);
+		 * 
+		 * 
+		 * removeExistingDay(new CurrentDate(2, 11, 2014)); sDays.put(new
+		 * CurrentDate(2, 11, 2014), 9);
+		 */
 
-		removeExistingDay(new CurrentDate(2, 11, 2014));
-		sDays.put(new CurrentDate(2, 11, 2014), 9);
-
-		removeExistingDay(new CurrentDate(3, 4, 2014));
-		sDays.put(new CurrentDate(3, 4, 2014), 12);
-		removeExistingDay(new CurrentDate(3, 5, 2014));
-		sDays.put(new CurrentDate(3, 5, 2014), 10);
-		removeExistingDay(new CurrentDate(3, 6, 2014));
-		sDays.put(new CurrentDate(3, 6, 2014), 11);
-
-		sDays.put(new CurrentDate(5, 2, 2014), 13);
+		sDays.put(new CurrentDate(8, 19, 2014), 14);
 
 		cp.addSpecialDays(sDays);
 		calStorage = cp.getCalStorage();

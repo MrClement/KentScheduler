@@ -2,6 +2,17 @@ package version2;
 
 public class SpecialSchedule {
 
+	/*
+	 * Key for period codes: -1 break -2 assembly -3 class meeting -4 advisory
+	 * -5 clubs -7 lunch
+	 */
+	private final int BREAK = -1;
+	private final int ASSEMBLY = -2;
+	private final int CLASSMTG = -3;
+	private final int ADVISORY = -4;
+	private final int CLUBS = -5;
+	private final int LUNCH = -7;
+
 	private Day specialDay;
 	private CurrentDate today;
 
@@ -62,9 +73,73 @@ public class SpecialSchedule {
 			case 13:
 				make05022014();
 				break;
+			case 14:
+				make08192014();
+				break;
 			default:
 				break;
 		}
+	}
+
+	private void make08192014() {
+		Day temp = new Day();
+		temp.setDayType('S');
+		Period p = new Period();
+		p.setStartTime(adjustTime(800, today, 1));
+		p.setEndTime(adjustTime(805, today, 1));
+		p.setNumber(CLASSMTG);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(805, today, 1));
+		p.setEndTime(adjustTime(840, today, 1));
+		p.setNumber(ASSEMBLY);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(850, today, 1));
+		p.setEndTime(adjustTime(930, today, 1));
+		p.setNumber(1);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(935, today, 1));
+		p.setEndTime(adjustTime(1015, today, 1));
+		p.setNumber(2);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1020, today, 1));
+		p.setEndTime(adjustTime(1100, today, 1));
+		p.setNumber(3);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1105, today, 1));
+		p.setEndTime(adjustTime(1145, today, 1));
+		p.setNumber(4);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1150, today, 1));
+		p.setEndTime(adjustTime(1205, today, 1));
+		p.setNumber(ADVISORY);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1210, today, 1));
+		p.setEndTime(adjustTime(1245, today, 1));
+		p.setNumber(LUNCH);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1250, today, 1));
+		p.setEndTime(adjustTime(1330, today, 1));
+		p.setNumber(5);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1335, today, 1));
+		p.setEndTime(adjustTime(1415, today, 1));
+		p.setNumber(6);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1420, today, 1));
+		p.setEndTime(adjustTime(1505, today, 1));
+		p.setNumber(7);
+		temp.add(p);
+		specialDay = temp;
 	}
 
 	private void make05022014() {
