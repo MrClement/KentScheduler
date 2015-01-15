@@ -76,6 +76,8 @@ public class SpecialSchedule {
 			case 14:
 				make08192014();
 				break;
+			case 15:
+				make01162015();
 			default:
 				break;
 		}
@@ -805,10 +807,61 @@ public class SpecialSchedule {
 		specialDay = temp;
 	}
 
+	private void make01162015() {
+		Day temp = new Day();
+		temp.setDayType('S');
+		Period p = new Period();
+		p.setStartTime(adjustTime(800, today, 1));
+		p.setEndTime(adjustTime(845, today, 1));
+		p.setNumber(1);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(850, today, 1));
+		p.setEndTime(adjustTime(935, today, 1));
+		p.setNumber(2);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(940, today, 1));
+		p.setEndTime(adjustTime(1025, today, 1));
+		p.setNumber(3);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1030, today, 1));
+		p.setEndTime(adjustTime(1115, today, 1));
+		p.setNumber(4);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1120, today, 1));
+		p.setEndTime(adjustTime(1205, today, 1));
+		p.setNumber(ASSEMBLY);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1205, today, 1));
+		p.setEndTime(adjustTime(1250, today, 1));
+		p.setNumber(LUNCH);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1255, today, 1));
+		p.setEndTime(adjustTime(1340, today, 1));
+		p.setNumber(5);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1345, today, 1));
+		p.setEndTime(adjustTime(1430, today, 1));
+		p.setNumber(6);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1435, today, 1));
+		p.setEndTime(adjustTime(1520, today, 1));
+		p.setNumber(7);
+		temp.add(p);
+		specialDay = temp;
+	}
+
 	public int adjustTime(int time, CurrentDate today, int direction) {
 		int currentTime = time;
 		// make 700 for DST
-		currentTime += 600 * direction;
+		currentTime += 700 * direction;
 		return currentTime;
 
 	}
