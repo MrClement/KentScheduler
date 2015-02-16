@@ -41,6 +41,8 @@ public class ScheduleServer {
 
 		sDays.put(new CurrentDate(8, 19, 2014), 14);
 		sDays.put(new CurrentDate(1, 16, 2015), 15);
+		removeExistingDay(new CurrentDate(2, 10, 2015));
+		sDays.put(new CurrentDate(2, 10, 2015), 16);
 
 		cp.addSpecialDays(sDays);
 		calStorage = cp.getCalStorage();
