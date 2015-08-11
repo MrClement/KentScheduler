@@ -14,6 +14,8 @@ public class ScheduleClientConnection implements Runnable {
 	private String line;
 	BufferedReader in;
 	PrintStream out;
+	private CurrentDate dstStartDate = new CurrentDate(Dates.DST_START_MONTH, Dates.DST_START_DAY, Dates.DST_START_YEAR);
+	private CurrentDate dstEndDate = new CurrentDate(Dates.DST_END_MONTH, Dates.DST_END_DAY, Dates.DST_END_YEAR);
 
 	private HashMap<CurrentDate, Day> calStorage;
 
@@ -117,7 +119,11 @@ public class ScheduleClientConnection implements Runnable {
 
 	public int adjustTime(int time, CurrentDate today, int direction) {
 		int currentTime = time;
-		currentTime += 600 * direction;
+		if (today.isBefore(dstStartDate) || today.isAfterOrEqual(dstEndDate)) {
+			currentTime += 600 * direction;
+		} else {
+			currentTime += 700 * direction;
+		}
 		return currentTime;
 
 	}
