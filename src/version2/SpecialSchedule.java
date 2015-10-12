@@ -88,6 +88,9 @@ public class SpecialSchedule {
 			case 18:
 				makeBTSN();
 				break;
+			case 19:
+				make10122015();
+				break;
 			default:
 				break;
 		}
@@ -1004,6 +1007,47 @@ public class SpecialSchedule {
 		p.setStartTime(adjustTime(2100, today, 1));
 		p.setEndTime(adjustTime(2110, today, 1));
 		p.setNumber(7);
+		temp.add(p);
+		specialDay = temp;
+	}
+	
+	private void make10122015() {
+		Day temp = new Day();
+		temp.setDayType('E');
+		Period p = new Period();
+		p.setStartTime(adjustTime(900, today, 1));
+		p.setEndTime(adjustTime(915, today, 1));
+		p.setNumber(CLASSMTG);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(920, today, 1));
+		p.setEndTime(adjustTime(1015, today, 1));
+		p.setNumber(5);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1020, today, 1));
+		p.setEndTime(adjustTime(1115, today, 1));
+		p.setNumber(7);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1120, today, 1));
+		p.setEndTime(adjustTime(1230, today, 1));
+		p.setNumber(1);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1235, today, 1));
+		p.setEndTime(adjustTime(1320, today, 1));
+		p.setNumber(LUNCH);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1325, today, 1));
+		p.setEndTime(adjustTime(1420, today, 1));
+		p.setNumber(3);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1425, today, 1));
+		p.setEndTime(adjustTime(1520, today, 1));
+		p.setNumber(4);
 		temp.add(p);
 		specialDay = temp;
 	}
