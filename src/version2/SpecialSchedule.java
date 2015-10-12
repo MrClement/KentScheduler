@@ -85,6 +85,9 @@ public class SpecialSchedule {
 			case 17:
 				make05012015();
 				break;
+			case 18:
+				makeBTSN();
+				break;
 			default:
 				break;
 		}
@@ -209,22 +212,24 @@ public class SpecialSchedule {
 		Period p = new Period();
 		p.setStartTime(adjustTime(800, today, 1));
 		p.setEndTime(adjustTime(805, today, 1));
-		p.setNumber(-3);
+		p.setNumber(CLASSMTG);
 		temp.add(p);
 		p = new Period();
 		p.setStartTime(adjustTime(805, today, 1));
 		p.setEndTime(adjustTime(840, today, 1));
-		p.setNumber(-2);
+		p.setNumber(ASSEMBLY);
 		temp.add(p);
 		p = new Period();
 		p.setStartTime(adjustTime(850, today, 1));
 		p.setEndTime(adjustTime(930, today, 1));
 		p.setNumber(1);
 		temp.add(p);
+		p = new Period();
 		p.setStartTime(adjustTime(935, today, 1));
 		p.setEndTime(adjustTime(1015, today, 1));
 		p.setNumber(2);
 		temp.add(p);
+		p = new Period();
 		p.setStartTime(adjustTime(1020, today, 1));
 		p.setEndTime(adjustTime(1100, today, 1));
 		p.setNumber(3);
@@ -237,12 +242,12 @@ public class SpecialSchedule {
 		p = new Period();
 		p.setStartTime(adjustTime(1150, today, 1));
 		p.setEndTime(adjustTime(1205, today, 1));
-		p.setNumber(-4);
+		p.setNumber(ADVISORY);
 		temp.add(p);
 		p = new Period();
 		p.setStartTime(adjustTime(1210, today, 1));
 		p.setEndTime(adjustTime(1245, today, 1));
-		p.setNumber(-7);
+		p.setNumber(LUNCH);
 		temp.add(p);
 		p = new Period();
 		p.setStartTime(adjustTime(1250, today, 1));
@@ -259,7 +264,6 @@ public class SpecialSchedule {
 		p.setEndTime(adjustTime(1505, today, 1));
 		p.setNumber(7);
 		temp.add(p);
-		p = new Period();
 		specialDay = temp;
 
 	}
@@ -954,6 +958,52 @@ public class SpecialSchedule {
 		p.setStartTime(adjustTime(1235, today, 1));
 		p.setEndTime(adjustTime(1310, today, 1));
 		p.setNumber(LUNCH);
+		temp.add(p);
+		specialDay = temp;
+	}
+
+	private void makeBTSN() {
+		Day temp = new Day();
+		temp.setDayType('E');
+		Period p = new Period();
+		p.setStartTime(adjustTime(1915, today, 1));
+		p.setEndTime(adjustTime(1925, today, 1));
+		p.setNumber(ADVISORY);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1930, today, 1));
+		p.setEndTime(adjustTime(1940, today, 1));
+		p.setNumber(1);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(1945, today, 1));
+		p.setEndTime(adjustTime(1955, today, 1));
+		p.setNumber(2);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(2000, today, 1));
+		p.setEndTime(adjustTime(2010, today, 1));
+		p.setNumber(3);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(2015, today, 1));
+		p.setEndTime(adjustTime(2025, today, 1));
+		p.setNumber(4);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(2030, today, 1));
+		p.setEndTime(adjustTime(2040, today, 1));
+		p.setNumber(5);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(2045, today, 1));
+		p.setEndTime(adjustTime(2055, today, 1));
+		p.setNumber(6);
+		temp.add(p);
+		p = new Period();
+		p.setStartTime(adjustTime(2100, today, 1));
+		p.setEndTime(adjustTime(2110, today, 1));
+		p.setNumber(7);
 		temp.add(p);
 		specialDay = temp;
 	}
